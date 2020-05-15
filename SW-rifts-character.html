@@ -1,0 +1,104 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script src="js\race.js"></script>
+    <script src="js\archetype.js"></script>
+    <script src="js\mars.js"></script>
+    <script src="js\edge.js"></script>
+    <script src="js\hinder.js"></script>
+    <script src="js\model.js"></script>
+    <script src="js\controller.js"></script>
+
+</head>
+<body>
+    <div id="content"></div>
+
+    
+
+    <script>
+        let contentDiv = document.getElementById('content');
+
+        show();
+        function show() {
+            let menuContent = '';
+            let attributeHtml = '';
+            let skillHtml = '';
+            for (index = 0; index < raceList.length; index++) {
+                let raceInfo = raceList[index];
+                menuContent += `<option onclick="raceChoice(${index})"> ${raceInfo.race} </option>`;
+            }
+            for (let statIndex = 0; statIndex < attributeList.length; statIndex++) {
+                let stats = attributeList[statIndex];
+                attributeHtml += `${stats.name}: d${stats.score} <button onclick="increaseAttribute(${statIndex})"> + </button><button onclick="decreaseAttribute(${statIndex})"> - </button></br>`;
+            }
+            for (let skillIndex = 0; skillIndex < skillList.length; skillIndex++) {
+                let skills = skillList[skillIndex];
+                skillHtml += `${skills.name}: d${skills.score} <button onclick="increaseSkill(${skillIndex})"> + </button><button onclick="decreaseSkill(${skillIndex})"> - </button></br>`;
+            }
+
+            contentDiv.innerHTML = `<p>Character maker SWADE Rifts<p>
+                            <select>${menuContent}</select>
+                            <div>${showInfo}</div>
+                            <div>${showType}</div>
+                            <div>
+                            Race: ${selectedRace} </br>
+                            Archetype: ${selectedArceType} </br>
+                            Remaining attributepoints: ${attributePoints}
+                            Remaining skillpoints: ${skillPoints}
+                            </br>
+                            </br>
+                            ${attributeHtml} </br>
+                            ${skillHtml}
+                            </div>
+                            `;
+        }
+
+
+        function raceChoice(index) {
+            let archetypecontent = '';
+
+            for (i = 0; i < archetypeList.length; i++) {
+                let aTypeInfo = archetypeList[i];
+                if (raceList[index].allowedArcheT != '') {
+                    if (raceList[index].allowedArcheT.includes(aTypeInfo.type) === false) {
+                        archetypecontent += `<option onclick="aTypeChoice(${i})"> ${aTypeInfo.type} </option>`;
+                    }
+                } else {
+                    archetypecontent += `<option onclick="aTypeChoice(${i})"> ${aTypeInfo.type} </option>`;
+                }
+            }
+            selectedRace = raceList[index].race;
+            showInfo = `<h1>${raceList[index].race}</h1> </br> ${raceList[index].description} </br> <select>${archetypecontent}</select>`;
+
+            show();
+        }
+
+        function aTypeChoice(index) {
+            let hindrancesOptions = '';
+            let edgeOptions = '';
+            for (i = 0; i < hindrancesList.length; i++) {
+                let hindrance = hindrancesList[i];
+                hindrancesOptions += `<option onclick="hindranceChoice(${i})">${hindrance.name}</option>`;
+            }
+            for (a = 0; a < edgeList.length; a++) {
+                let edge = edgeList[a];
+                edgeOptions += `<option onclick="edgeChoice(${a})">${edge.name}</option>`;
+            }
+
+            selectedArceType = archetypeList[index].type;
+
+            showType = `<h1>${archetypeList[index].type}</h1>
+                            ${archetypeList[index].description}</br>
+                            <select>${hindrancesOptions}</select>
+                            <select>${edgeOptions}</select >
+                            `;
+
+            show();
+        }
+
+    </script>
+</body>
+</html>
