@@ -1,5 +1,6 @@
 const raceList = [{
-    race: 'Android', description: `<div>Androids are semi-organic beings created </br>
+    race: 'Android', description: `<div class="row">
+                    <div class="column">Androids are semi-organic beings created </br>
                     by advanced technology. The example </br>
                     here mimics humans in most ways and </br>
                     can generally pass for them when desired </br>
@@ -7,11 +8,36 @@ const raceList = [{
                     advanced neural network gives them artificial </br>
                     intelligence complete with individual </br>
                     personalities, quirks, and emotions just like </br>
-                    any other sapient being.</div>`, abilities: 'a', bonuses: 'a', allowedArcheT: ''
+                    any other sapient being.</div>
+                    <div class="column">
+                    <img src="pictures/android.jpg" style="width: 100%">
+                    </div>
+                    </div>`, abilities: 'a', bonuses: 'a', allowedArcheT: ''
 },
 { race: "Avion", description: 'b', abilities: 'b', bonuses: 'b', allowedArcheT: '' },
 { race: "Half-folk", description: 'c', abilities: 'c', bonuses: 'c', allowedArcheT: '' }, { race: "Rakashans", description: 'd', abilities: 'd', bonuses: 'd', allowedArcheT: '' },
-{ race: "Saurians", description: 'e', abilities: 'e', bonuses: 'e', allowedArcheT: '' }, { race: "Human", description: 'f', abilities: 'f', bonuses: 'f', allowedArcheT: '' },
+    { race: "Saurians", description: 'e', abilities: 'e', bonuses: 'e', allowedArcheT: '' },
+    {
+        race: "Human",
+        description: `<div class="row">
+                    <div class="column">Humans in most settings get one free Edge</br>
+                    of their choice. This option reflects their</br>
+                    versatility and adaptability compared to most</br>
+                    other races. For more variety, the GM might give</br>
+                    humans abilities based on culture rather</br>
+                    than race. For instance, a nomadic, horsebased</br>
+                    society might start with skill points in</br>
+                    Riding and Survival. Cultural templates are</br>
+                    designed just like making new races, though</br>
+                    GMs should allow for more exceptions than</br>
+                    usual since the abilities tend to be learned</br>
+                    rather than truly innate.</div>
+                    <div class="column">
+                    <img src="pictures/human.jpg" style="width: 100%">
+                    </div>
+                    </div>`
+        , abilities: 'f', bonuses: 'f', allowedArcheT: ''
+    },
 { race: "Altara", description: 'g', abilities: 'g', bonuses: 'g', allowedArcheT: '' },
 { race: "D´norr", description: 'h', abilities: 'h', bonuses: 'h', allowedArcheT: ['Burster', 'Crazy', 'Cyber-knight', 'Mind Melter', 'Knight of the white rose', 'Nega-psychic', 'Zapper'] },
 { race: "Dog boy", description: 'i', abilities: 'i', bonuses: 'i', allowedArcheT: '' }, { race: "Fennodi", description: 'j', abilities: 'j', bonuses: 'j', allowedArcheT: '' },

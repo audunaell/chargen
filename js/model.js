@@ -14,6 +14,7 @@ let gearList = [];
 
 let showInfo = '';
 let showType = '';
+let showHindrance = '';
 
 let strain = null;
 let pace = null;
@@ -22,6 +23,7 @@ let toughness = null;
 let ppe = null;
 let isp = null;
 let hindrancePoints = 4;
+let pointsFromH = 0;
 let selectedRace = '';
 let selectedArceType = '';
 let selectedHindrances = [];

@@ -4,6 +4,21 @@
 <head>
     <meta charset="utf-8" />
     <title></title>
+
+    <style>
+        .column{
+            float: left;
+            width: 33%;
+            padding: 5px;
+        }
+        .row::after{
+            content:"";
+            clear:both;
+            display:table;
+        }
+    </style>
+
+
     <script src="js\race.js"></script>
     <script src="js\archetype.js"></script>
     <script src="js\mars.js"></script>
@@ -26,6 +41,8 @@
             let menuContent = '';
             let attributeHtml = '';
             let skillHtml = '';
+            let hindranceHtml = '';
+
             for (index = 0; index < raceList.length; index++) {
                 let raceInfo = raceList[index];
                 menuContent += `<option onclick="raceChoice(${index})"> ${raceInfo.race} </option>`;
@@ -38,20 +55,28 @@
                 let skills = skillList[skillIndex];
                 skillHtml += `${skills.name}: d${skills.score} <button onclick="increaseSkill(${skillIndex})"> + </button><button onclick="decreaseSkill(${skillIndex})"> - </button></br>`;
             }
+            for (let hindex = 0; hindex < selectedHindrances.length; hindex++) {
+                let hindrancesSelected = selectedHindrances[hindex];
+                hindranceHtml += `Chosen hindrances: ${hindrancesSelected.name} as a ${hindrancesSelected.cost}. <button onclick="removeHindrance(${hindex})">Remove</button></br>`;
+            }
 
             contentDiv.innerHTML = `<p>Character maker SWADE Rifts<p>
                             <select>${menuContent}</select>
                             <div>${showInfo}</div>
                             <div>${showType}</div>
+                            <div>${showHindrance}</div>
                             <div>
                             Race: ${selectedRace} </br>
                             Archetype: ${selectedArceType} </br>
                             Remaining attributepoints: ${attributePoints}
                             Remaining skillpoints: ${skillPoints}
+                            Remaining hindrancepoints: ${hindrancePoints}
+                            Points from hindrances: ${pointsFromH}
                             </br>
                             </br>
                             ${attributeHtml} </br>
-                            ${skillHtml}
+                            ${skillHtml} </br>
+                            ${hindranceHtml}
                             </div>
                             `;
         }
@@ -95,6 +120,18 @@
                             <select>${hindrancesOptions}</select>
                             <select>${edgeOptions}</select >
                             `;
+
+            show();
+        }
+        function hindranceChoice(index) {
+            let hindranceInfo = hindrancesList[index];
+            if (hindranceInfo.cost === 1) {
+                showHindrance = `<button onclick="SelecetHindrance(1, index)">Minor</button>`;
+            } else if (hindranceInfo.cost === 2) {
+                showHindrance = `<button onclick="SelecetHindrance(2, index)">Major</button>`;
+            } else {
+                showHindrance = `<button onclick="SelecetHindrance(1, index)">Minor</button><button onclick="SelecetHindrance(2)">Major</button>`;
+            }
 
             show();
         }

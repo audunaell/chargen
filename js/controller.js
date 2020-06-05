@@ -36,3 +36,20 @@ function decreaseSkill(index) {
     }
     show();
 }
+
+function SelecetHindrance(hindranceValue, index) {
+    if (hindrancePoints >= hindranceValue) {
+        hindrancePoints = hindrancePoints - hindranceValue;
+        pointsFromH = pointsFromH + hindranceValue;
+        selectedHindrances.push({ name: hindrancesList[index].name, cost: hindranceValue });
+    }    
+    show();
+}
+
+function removeHindrance(index) {
+    hindrancePoints = hindrancePoints + selectedHindrances[index].cost;
+    pointsFromH = pointsFromH - selectedHindrances[index].cost;
+    selectedHindrances.splice(index, 1);
+
+    show();
+}
