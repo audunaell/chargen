@@ -1,13 +1,13 @@
 const raceList = [{
     race: 'Android', description: `<div class="row">
-                    <div class="column">Androids are semi-organic beings created </br>
-                    by advanced technology. The example </br>
-                    here mimics humans in most ways and </br>
-                    can generally pass for them when desired </br>
-                    (and not examined by a physician). Their </br>
-                    advanced neural network gives them artificial </br>
-                    intelligence complete with individual </br>
-                    personalities, quirks, and emotions just like </br>
+                    <div class="column">Androids are semi-organic beings created 
+                    by advanced technology. The example 
+                    here mimics humans in most ways and 
+                    can generally pass for them when desired 
+                    (and not examined by a physician). Their 
+                    advanced neural network gives them artificial 
+                    intelligence complete with individual 
+                    personalities, quirks, and emotions just like 
                     any other sapient being.</div>
                     <div class="column">
                     <img src="pictures/android.jpg" style="width: 100%">
@@ -20,17 +20,17 @@ const raceList = [{
     {
         race: "Human",
         description: `<div class="row">
-                    <div class="column">Humans in most settings get one free Edge</br>
-                    of their choice. This option reflects their</br>
-                    versatility and adaptability compared to most</br>
-                    other races. For more variety, the GM might give</br>
-                    humans abilities based on culture rather</br>
-                    than race. For instance, a nomadic, horsebased</br>
-                    society might start with skill points in</br>
-                    Riding and Survival. Cultural templates are</br>
-                    designed just like making new races, though</br>
-                    GMs should allow for more exceptions than</br>
-                    usual since the abilities tend to be learned</br>
+                    <div class="column">Humans in most settings get one free Edge
+                    of their choice. This option reflects their
+                    versatility and adaptability compared to most
+                    other races. For more variety, the GM might give
+                    humans abilities based on culture rather
+                    than race. For instance, a nomadic, horsebased
+                    society might start with skill points in
+                    Riding and Survival. Cultural templates are
+                    designed just like making new races, though
+                    GMs should allow for more exceptions than
+                    usual since the abilities tend to be learned
                     rather than truly innate.</div>
                     <div class="column">
                     <img src="pictures/human.jpg" style="width: 100%">

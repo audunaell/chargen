@@ -6,15 +6,75 @@
     <title></title>
 
     <style>
-        .column{
+        body{
+            overflow:hidden;
+            min-height:100vh;
+        }
+        .mainColumn{
+            background-color:antiquewhite;
             float: left;
-            width: 33%;
+            width: 45%;
             padding: 5px;
+            height:90vh;
+            overflow:auto;            
+        }
+        .contentColumn {
+            float: left;
+            width: 45%;            
+            padding: 5px;            
+        }
+
+        .mainRow:after {
+            content: "";
+            clear: both;
+            display: table;
+        }
+
+        h2{
+            position:center;
+            padding-left:36%;            
+        }
+        .stay{
+            height:auto;
+        }
+
+        .column {
+            background-color:gainsboro;
+            border:solid brown 2px;
+            float: left;
+            width: 49%;
+            padding: 1px;
         }
         .row::after{
             content:"";
             clear:both;
             display:table;
+        }
+
+        .attributeColum{
+            background-color:aliceblue;
+            float: left;
+            width: 10%;
+            padding: 3px;
+            border:solid black 1px;
+        }
+        .attributeRow::after{
+            content:"";
+            clear:both;
+            display:table;
+        }
+        .changeColumn{
+            background-color:black;
+            float:left;
+            padding:1px;
+            border:solid black 1px;
+        }
+        .skillColum {
+            background-color: aliceblue;
+            float: left;
+            width: 30%;
+            padding: 3px;
+            border: solid black 1px;
         }
     </style>
 
@@ -49,34 +109,42 @@
             }
             for (let statIndex = 0; statIndex < attributeList.length; statIndex++) {
                 let stats = attributeList[statIndex];
-                attributeHtml += `${stats.name}: d${stats.score} <button onclick="increaseAttribute(${statIndex})"> + </button><button onclick="decreaseAttribute(${statIndex})"> - </button></br>`;
+                attributeHtml += `<div class="attributeRow"><div class="attributeColum">${stats.name}: d${stats.score}</div>
+                <div class="changeColumn"><button onclick="increaseAttribute(${statIndex})"> + </button><button onclick="decreaseAttribute(${statIndex})"> - </button></div></div>`;
             }
             for (let skillIndex = 0; skillIndex < skillList.length; skillIndex++) {
                 let skills = skillList[skillIndex];
-                skillHtml += `${skills.name}: d${skills.score} <button onclick="increaseSkill(${skillIndex})"> + </button><button onclick="decreaseSkill(${skillIndex})"> - </button></br>`;
+                skillHtml += `<div class="attributeRow"><div class="skillColum">${skills.name}: d${skills.score} </div> 
+                <div class="changeColumn"><button onclick="increaseSkill(${skillIndex})"> + </button><button onclick="decreaseSkill(${skillIndex})"> - </button></div></div>`;
             }
             for (let hindex = 0; hindex < selectedHindrances.length; hindex++) {
                 let hindrancesSelected = selectedHindrances[hindex];
                 hindranceHtml += `Chosen hindrances: ${hindrancesSelected.name} as a ${hindrancesSelected.cost}. <button onclick="removeHindrance(${hindex})">Remove</button></br>`;
             }
 
-            contentDiv.innerHTML = `<p>Character maker SWADE Rifts<p>
-                            <select>${menuContent}</select>
-                            <div>${showInfo}</div>
-                            <div>${showType}</div>
-                            <div>${showHindrance}</div>
-                            <div>
-                            Race: ${selectedRace} </br>
-                            Archetype: ${selectedArceType} </br>
-                            Remaining attributepoints: ${attributePoints}
-                            Remaining skillpoints: ${skillPoints}
-                            Remaining hindrancepoints: ${hindrancePoints}
-                            Points from hindrances: ${pointsFromH}
-                            </br>
-                            </br>
-                            ${attributeHtml} </br>
-                            ${skillHtml} </br>
-                            ${hindranceHtml}
+            contentDiv.innerHTML = `<h2>Character maker SWADE Rifts</h2>
+                            <div class="mainRow">
+                                <div class="mainColumn">
+                                    <select>${menuContent}</select>
+                                    <div>${showInfo}</div>
+                                    <div>${showType}</div>
+                                    <div>${showHindrance}</div>
+                                    <div>
+                                        </br>
+                                        ${attributeHtml} </br>
+                                        ${skillHtml}
+                                    </div>
+                                </div>
+                                <div class="contentColumn">
+                                    Remaining attributepoints: ${attributePoints}
+                                        Remaining skillpoints: ${skillPoints}
+                                        Remaining hindrancepoints: ${hindrancePoints}
+                                        Points from hindrances: ${pointsFromH}
+                                        </br></br>
+                                    Race: ${selectedRace} </br>
+                                    Archetype: ${selectedArceType} </br>                            
+                                    ${hindranceHtml}
+                                </div>
                             </div>
                             `;
         }
@@ -125,12 +193,13 @@
         }
         function hindranceChoice(index) {
             let hindranceInfo = hindrancesList[index];
+            showHindrance = `<h1>${hindranceInfo.name}</h1></br>`;
             if (hindranceInfo.cost === 1) {
-                showHindrance = `<button onclick="SelecetHindrance(1, index)">Minor</button>`;
+                showHindrance += `<button onclick="SelecetHindrance(1, index)">Minor</button>`;
             } else if (hindranceInfo.cost === 2) {
-                showHindrance = `<button onclick="SelecetHindrance(2, index)">Major</button>`;
+                showHindrance += `<button onclick="SelecetHindrance(2, index)">Major</button>`;
             } else {
-                showHindrance = `<button onclick="SelecetHindrance(1, index)">Minor</button><button onclick="SelecetHindrance(2)">Major</button>`;
+                showHindrance += `<button onclick="SelecetHindrance(1, index)">Minor</button><button onclick="SelecetHindrance(2)">Major</button>`;
             }
 
             show();
